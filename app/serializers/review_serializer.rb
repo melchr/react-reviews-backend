@@ -1,3 +1,4 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :title, :content, :genre, :img_url
+  include FastJsonapi::ObjectSerializer
+  attributes :title, :content, :genre, :img_url, :comments
 end
