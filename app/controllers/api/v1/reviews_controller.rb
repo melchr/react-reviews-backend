@@ -9,7 +9,7 @@ class Api::V1::ReviewsController < ApplicationController
         if review.save
             render json: ReviewSerializer.new(review), status: :accepted
         else
-            render json: {errors: event.errors.full_messages}, status: :unprocessible_entity
+            render json: {errors: review.errors.full_messages}, status: :unprocessible_entity
         end
     end
 
