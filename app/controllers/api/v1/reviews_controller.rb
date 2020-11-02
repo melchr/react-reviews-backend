@@ -17,4 +17,9 @@ class Api::V1::ReviewsController < ApplicationController
         review = Review.find_by_id(params[:id])
         render json: ReviewSerializer.new(review)
     end
+
+    private
+    def review_params
+        params.require(:review).permit(:title, :content, :genre, :img_url)
+    end
 end
