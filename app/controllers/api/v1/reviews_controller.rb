@@ -14,6 +14,7 @@ class Api::V1::ReviewsController < ApplicationController
     end
 
     def show
-        render json: Review.find(params[:id])
+        review = Review.find_by_id(params[:id])
+        render json: ReviewSerializer.new(review)
     end
 end
