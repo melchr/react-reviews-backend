@@ -1,4 +1,7 @@
 class Api::V1::CommentsController < ApplicationController
+
+    before_action :find_review, except: [:destroy]
+
     def index
         comments = Comment.all
         render json: CommentSerializer.new(comments)
@@ -21,7 +24,7 @@ class Api::V1::CommentsController < ApplicationController
     end
 
     private
-    
+
     def find_review
         review = Review.find(params[:review_id])
     end
