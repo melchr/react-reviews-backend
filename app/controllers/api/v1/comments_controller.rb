@@ -5,7 +5,7 @@ class Api::V1::CommentsController < ApplicationController
     end
 
     def create 
-
+        comment = review.comments.build(comment_params)
     end
 
     def destroy 
