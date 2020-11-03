@@ -22,6 +22,10 @@ class Api::V1::CommentsController < ApplicationController
 
     private
     
+    def find_review
+        review = Review.find(params[:review_id])
+    end
+
     def comment_params
         params.require(:comment).permit(:content, :review_id)
     end
