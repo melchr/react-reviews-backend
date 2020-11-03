@@ -11,4 +11,9 @@ class Api::V1::CommentsController < ApplicationController
     def destroy 
 
     end
+
+    private
+    def comment_params
+        params.require(:comment).permit(:content, :review_id)
+    end
 end
