@@ -14,10 +14,14 @@ class Api::V1::CommentsController < ApplicationController
     end
 
     def destroy 
-
+        comment = Comment.find_by(id: params[:id])
+        review = Review.find(comment.review_id)
+        comment.destroy
+        render json: ReviewSerializer.new(review)
     end
 
     private
+    
     def comment_params
         params.require(:comment).permit(:content, :review_id)
     end
