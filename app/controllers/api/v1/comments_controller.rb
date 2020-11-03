@@ -6,6 +6,11 @@ class Api::V1::CommentsController < ApplicationController
 
     def create 
         comment = review.comments.build(comment_params)
+        if comment.save
+            render json: ReviewSerializer.new(review), status: :accepted
+        else
+            render json: {errors: review.errors.full_messages}, status: :unprocessible_entity
+        end
     end
 
     def destroy 
