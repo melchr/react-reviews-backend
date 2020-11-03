@@ -1,17 +1,12 @@
-Review.destroy_all
-Comment.destroy_all
 
-5.times do 
-Review.create(
-    title: Faker::Music.band,
+Comment.destroy_all
+Review.destroy_all
+
+review1 = Review.create(
+    title: Faker::Music.band + " Album Review",
     content: Faker::Hipster.paragraph,
     genre: Faker::Music.genre,
-    img_url: Faker::LoremPixel.image
-)
-end
+    img_url: Faker::LoremPixel.image)
 
-3.times do 
-    Comment.create(
-    content: Faker::Hipster.paragraph
-    )
-end
+
+    comment1 = Comment.create(content: Faker::Hipster.paragraph, review_id: review1.id)
