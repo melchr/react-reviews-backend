@@ -8,5 +8,10 @@ Review.create(
     genre: Faker::Music.genre,
     img_url: Faker::LoremPixel.image
 )
+end
 
+3.times do 
+    Comment.create(
+    content: Faker::Hipster.paragraph
+    )
 end
